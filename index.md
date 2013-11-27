@@ -57,8 +57,6 @@ style: |
 	- ...5 B Prices
 	- ...1 TB data crawled daily
 
-## Tech Stack @ Indix
-
 ## Data Pipeline @ Indix
 
 - TODO - Add a nice diagram
@@ -82,14 +80,85 @@ style: |
 	- ... Storage
 	- ... Algorithms
 
-## **Our Choice - Akka** 
-{:.shout #SeeMore}
+## Components
 
-## **State**
+- URL Frontier 
+- URL Router
+- Http Fetchers
 
-## **The devil is in the `mutable` state** {#SeeMore}
+## Our Choice - Akka
 
-## Code Samples
+![](pictures/akka.jpg)
+{:.cover }
+
+## Why Akka?
+
+- ...Simpler
+	- ... Concurrency
+	- ... Scalability
+	- ... Fault Tolerance
+
+## Program at a Higher Level
+
+- ... You need not think about
+	- ... shared state, state visibility
+	- ... threads, locks etc.
+- ... Gives you
+	- ... high CPU Utilization
+	- ... low latency
+
+## Scale Up vs Scale Out
+
+- ... Distributable by Design
+- ... Fault Tolerant & Self Healing
+- ... Adaptive Load Balancing
+
+## **How does Akka do it?**
+
+## **Using Actors**
+
+## What is an Actor?
+
+- ... Unit of code organization in Akka
+- ... Separates "Policy Decisions" from Business Logic
+- ... Used since 1973
+	- ... in Telecom with 9 nines availability
+
+## More on Actors
+
+- ... Encapsulated & decoupled 
+- ... Manage their own memory & behavior
+- ... Communicate via non-blocking async messages
+- ... Hot Deploy - Change behavior at runtime
+
+## Models for concurrency
+
+- ... Shared state concurrency
+- ... Message passing concurrency
+
+## **Show me the code**
+
+## 1. Create
+
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>a.scala</title>
+<link rel="stylesheet" type="text/css" href="highlight.css">
+</head>
+<body class="hl">
+<pre class="hl"><span class="hl kwa">case class</span> <span class="hl kwd">Greeting</span><span class="hl opt">(</span>who<span class="hl opt">:</span> String<span class="hl opt">)</span>
+
+<span class="hl kwa">case</span> GreetingActor <span class="hl kwa">extends</span> Actor with ActorLogging <span class="hl opt">{</span>
+  <span class="hl kwa">def</span> receive <span class="hl opt">= {</span>
+    <span class="hl kwa">case</span> <span class="hl kwd">Greeting</span><span class="hl opt">(</span>who<span class="hl opt">) =&gt;</span> log<span class="hl opt">.</span><span class="hl kwd">info</span><span class="hl opt">(</span><span class="hl str">&quot;Hello {}&quot;</span><span class="hl opt">,</span> who<span class="hl opt">)</span>     
+  <span class="hl opt">}</span>
+<span class="hl opt">}</span>
+
+</pre>
+</body>
+</html>
+
+ Code Samples
 
     <!DOCTYPE html>
     <html lang="en">
