@@ -80,12 +80,6 @@ style: |
 	- ... Storage
 	- ... Algorithms
 
-## Components
-
-- URL Frontier 
-- URL Router
-- Http Fetchers
-
 ## Our Choice - Akka
 
 ![](pictures/akka.jpg)
@@ -109,7 +103,7 @@ style: |
 
 ## Scale Up vs Scale Out
 
-- ... Distributable by Design
+- ... Distributed by Design
 - ... Fault Tolerant & Self Healing
 - ... Adaptive Load Balancing
 
@@ -119,17 +113,13 @@ style: |
 
 ## What is an Actor?
 
-- ... Unit of code organization in Akka
-- ... Separates "Policy Decisions" from Business Logic
+- ... Unit of computation in Akka
+- ... Purely reactive
+	- ... a mailbox
+	- ... behavior & state
+	- ... scheduled to run when sent a message
 - ... Used since 1973
 	- ... in Telecom with 9 nines availability
-
-## More on Actors
-
-- ... Encapsulated & decoupled 
-- ... Manage their own memory & behavior
-- ... Communicate via non-blocking async messages
-- ... Hot Deploy - Change behavior at runtime
 
 ## Models for concurrency
 
@@ -138,62 +128,68 @@ style: |
 
 ## **Show me the code**
 
-## 1. Create
+## **Hello World**
 
-<html><head>
-<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
-<title>a.scala</title>
-<link rel="stylesheet" type="text/css" href="highlight.css">
-</head>
-<body class="hl">
-<pre class="hl"><span class="hl kwa">case class</span> <span class="hl kwd">Greeting</span><span class="hl opt">(</span>who<span class="hl opt">:</span> String<span class="hl opt">)</span>
+## Parallelism
 
-<span class="hl kwa">case</span> GreetingActor <span class="hl kwa">extends</span> Actor with ActorLogging <span class="hl opt">{</span>
-  <span class="hl kwa">def</span> receive <span class="hl opt">= {</span>
-    <span class="hl kwa">case</span> <span class="hl kwd">Greeting</span><span class="hl opt">(</span>who<span class="hl opt">) =&gt;</span> log<span class="hl opt">.</span><span class="hl kwd">info</span><span class="hl opt">(</span><span class="hl str">&quot;Hello {}&quot;</span><span class="hl opt">,</span> who<span class="hl opt">)</span>     
-  <span class="hl opt">}</span>
-<span class="hl opt">}</span>
+- ... Scale by creating multiple actor instances
+- ... Order is not guaranteed
 
-</pre>
-</body>
-</html>
+## Supervision
 
- Code Samples
+- ... Manage other Actor''s failure
+- ... Termination messages sent to Supervisor
+- ... Separates processing & error handling
+- ... Multiple Strategies
+	- ... One-For-One
+	- ... All-For-One
 
-    <!DOCTYPE html>
-    <html lang="en">
-    <mark><head></mark> <mark class="comment"><!--Comment--></mark>
-        <title>Shower</title>
-        <meta charset="<mark class="important">UTF-8</mark>">
-        <link rel="stylesheet" href="screen.css">
-    <mark></head></mark>
+## Clustering
 
-## Even Tables
+- ... Released in Akka 2.2
+- ... Gossip based Cluster Membership
+- ... Failure Detector
+- ... Cluster DeathWatch
+- ... Adaptive Load Balancing
 
-|  Locavore      | Umami       | Helvetica | Vegan     |
-+----------------|-------------|-----------|-----------+
-|* Fingerstache *| Kale        | Chips     | Keytar    |
-|* Sriracha     *| Gluten-free | Ennui     | Keffiyeh  |
-|* Thundercats  *| Jean        | Shorts    | Biodiesel |
-|* Terry        *| Richardson  | Swag      | Blog      |
+## ** Back to the Crawler **
 
-It’s good to have information organized.
+## Key Components
 
-## Pictures
-{:.cover #Picture}
+- ... URL Frontiers 
+	- ... Site Queues
+	- ... Priority Queues
+- ... URL Router ( 1 per frontier)
+- ... Http Fetchers	
+- ... URL Scheduler
 
-![](pictures/picture.jpg)
-<!-- photo by John Carey, fiftyfootshadows.net -->
+## Patterns Used
 
-## **You can even shout this way**
+- ... Supervision Strategy
+- ... Work Pulling
+- ... Throttling
+- ... Periodic Message Scheduling
+- ... Finite State Machine
+	- ... Hot swapping Actor Behavior
 
-## Inner Navigation
+## Lessons Learned
 
-1. Lets you reveal list items one by one
-2. …To keep some key points
-3. …In secret from audience
-4. …But it will work only once
-5. …Nobody wants to see the same joke twice
+- ... The Actor Model
+	- ... Like OO - New way of thinking
+	- ... Actor Composition
+	- ... Message Design
+	- ... Externalize Business Logic
+- ... EC2 Tuning
+	- ... Unreliable Network
+	- ... Failure detector tuning
+- ... Message Tracing
+	- ... Unique identifier for all messages
+	- ... Splunk to visualize the flow
 
-## ![](http://shwr.me/pictures/logo.svg) [See more on GitHub](https://github.com/shower/shower/)
-{:.shout #SeeMore}
+## Challenges
+
+- ... 
+
+
+
+
