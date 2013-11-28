@@ -31,13 +31,23 @@ style: |
         height:0.72em;
         }
     #Akka img {
-        width:20em;
-        height:20em; 
+        width:25em;
+        height:17em; 
         }
     #Actor img {
         width:17em;
         height:17em; 
         }
+    #Pipeline img {
+       width:30em;
+       margin:-30px -10px 0 0; 
+       height:20em;    
+       }
+    #AkkaSurvey img {
+       width:30em;
+       margin:-20px -10px 0 0; 
+       height:17em;    	  		
+      }
 ---
 
 # Building a Distributed Crawler using Scala and Akka {#Cover}
@@ -66,9 +76,10 @@ style: |
 	- ...5 B Prices
 	- ...1.5 TB data crawled daily
 
-## Data Pipeline @ Indix
+## Data Pipeline @ Indix {#Pipeline}
 
-- TODO - Add a nice diagram
+![](pictures/data-pipeline.png)
+
 
 ## Crawler - Requirements
 
@@ -104,7 +115,7 @@ style: |
 		- ... Distributed by Design
 	- ... Fault Tolerance
 
-## **So what`s the <br>secret sauce?** 
+## **So what`s the <br>secret sauce?** {#SeeMore}
 
 ## **Actors**
 
@@ -122,9 +133,9 @@ style: |
 ## With a Diagram {#Actor}
 ![](pictures/actor.jpg) 
 
-## **Show me the code**
+## **Show me the code** {#SeeMore}
 
-## **Hello World**
+## **Hello World** {#SeeMore}
 
 ## Parallelism
 
@@ -148,7 +159,7 @@ style: |
 - ... Cluster DeathWatch
 - ... Adaptive Load Balancing
 
-## **Back to the Crawler**
+## **Back to the Crawler** {#SeeMore}
 
 ## Key Components
 
@@ -165,8 +176,6 @@ style: |
 - ... Work Pulling
 - ... Throttling
 - ... Periodic Message Scheduling
-- ... Finite State Machine
-	- ... Hot swapping Actor Behavior
 
 ## Lessons Learned
 
@@ -189,7 +198,7 @@ style: |
 	- ... Unique identifier for all messages
 	- ... Splunk to visualize the flow
 
-## Akka Survey
+## Akka Survey {#AkkaSurvey}
 ![](pictures/akka-survey.png)
 
 ## Future Akka Roadmap
@@ -213,8 +222,8 @@ style: |
 
 ## Extras
 
--... Map Reduce Example
--... Cluster - Advanced 
+- ... Map Reduce Example
+- ... Cluster - Advanced 
 	- ... Gossip Convergence 
 	- ... Leader Election
 
