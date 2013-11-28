@@ -26,10 +26,15 @@ style: |
     #SeeMore h2 {
         font-size:100px
         }
-    #SeeMore img {
-        width:0.72em;
-        height:0.72em;
+    #SeeMore1 h2 {
+        font-size:100px
         }
+    #SeeMore2 h2 {
+        font-size:100px
+        }
+    #SeeMore3 h2 {
+        font-size:100px	
+        } 
     #Akka img {
         width:25em;
         height:17em; 
@@ -50,7 +55,7 @@ style: |
       }
 ---
 
-# Building a Distributed Crawler using Scala and Akka {#Cover}
+# Building a Distributed Crawler using Akka {#Cover}
 
 *[Rajesh Muppalla](http://www.github.com/codingnirvana/) - rajesh@indix.com*
 
@@ -133,9 +138,9 @@ style: |
 ## With a Diagram {#Actor}
 ![](pictures/actor.jpg) 
 
-## **Show me the code** {#SeeMore}
+## **Show me the code** {#SeeMore1}
 
-## **Hello World** {#SeeMore}
+## **Hello World** {#SeeMore2}
 
 ## Parallelism
 
@@ -159,7 +164,7 @@ style: |
 - ... Cluster DeathWatch
 - ... Adaptive Load Balancing
 
-## **Back to the Crawler** {#SeeMore}
+## **Back to the Crawler** {#SeeMore3}
 
 ## Key Components
 
@@ -204,7 +209,7 @@ style: |
 ## Future Akka Roadmap
 
 - ... Persistence
-	- ... Jouraling system
+	- ... Journaling system
 	- ... Replay messages on failure
 - ... Cluster
 	- ... Optimization (for > 200 nodes)
