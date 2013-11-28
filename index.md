@@ -30,6 +30,14 @@ style: |
         width:0.72em;
         height:0.72em;
         }
+    #Akka img {
+        width:20em;
+        height:20em; 
+        }
+    #Actor img {
+        width:17em;
+        height:17em; 
+        }
 ---
 
 # Building a Distributed Crawler using Scala and Akka {#Cover}
@@ -50,12 +58,13 @@ style: |
 ## About Indix
 
 - Product Intelligence Platform
-- ...Founded Early 2012
+- ...Founded - Jan 2012
 - ...35 Person team in Chennai & Seattle
+- ...Big Data Company 
 - ...Some Stats
 	- ...120 M Products
 	- ...5 B Prices
-	- ...1 TB data crawled daily
+	- ...1.5 TB data crawled daily
 
 ## Data Pipeline @ Indix
 
@@ -63,12 +72,12 @@ style: |
 
 ## Crawler - Requirements
 
--  Focused
-- ...Polite
 - ...Distributed
+- ...Polite
+- ...Focused
 - ...Efficient
 - ...Fault Tolerant
-- ...Pluggable
+- ...Extensible
 
 ## Our Options
 
@@ -80,40 +89,29 @@ style: |
 	- ... Storage
 	- ... Algorithms
 
-## Our Choice - Akka
+## Our Choice - Akka {#Akka}
 
 ![](pictures/akka.jpg)
-{:.cover }
 
 ## Why Akka?
 
-- ...Simpler
+- Simpler
 	- ... Concurrency
+		- ... Program at a higher level
+		- ... Don`t think 
+			- ... threads, shared state
 	- ... Scalability
+		- ... Distributed by Design
 	- ... Fault Tolerance
 
-## Program at a Higher Level
+## **So what`s the <br>secret sauce?** 
 
-- ... You need not think about
-	- ... shared state, state visibility
-	- ... threads, locks etc.
-- ... Gives you
-	- ... high CPU Utilization
-	- ... low latency
-
-## Scale Up vs Scale Out
-
-- ... Distributed by Design
-- ... Fault Tolerant & Self Healing
-- ... Adaptive Load Balancing
-
-## **How does Akka do it?**
-
-## **Using Actors**
+## **Actors**
 
 ## What is an Actor?
 
 - ... Unit of computation in Akka
+- ... Message passing concurrency
 - ... Purely reactive
 	- ... a mailbox
 	- ... behavior & state
@@ -121,10 +119,8 @@ style: |
 - ... Used since 1973
 	- ... in Telecom with 9 nines availability
 
-## Models for concurrency
-
-- ... Shared state concurrency
-- ... Message passing concurrency
+## With a Diagram {#Actor}
+![](pictures/actor.jpg) 
 
 ## **Show me the code**
 
@@ -152,7 +148,7 @@ style: |
 - ... Cluster DeathWatch
 - ... Adaptive Load Balancing
 
-## ** Back to the Crawler **
+## **Back to the Crawler**
 
 ## Key Components
 
@@ -176,19 +172,52 @@ style: |
 
 - ... The Actor Model
 	- ... Like OO - New way of thinking
-	- ... Actor Composition
-	- ... Message Design
-	- ... Externalize Business Logic
-- ... EC2 Tuning
+	- ... Actor composition
+	- ... Message design
+	- ... Externalize business logic
+- ... No Blocking
+	- ... Degraded performance due to starvation
+	- ... Separate thread pool
+
+## Lessons Learned (Continued)
+
+- ... Running on EC2
 	- ... Unreliable Network
 	- ... Failure detector tuning
-- ... Message Tracing
+
+- ... Message Tracing - Debugging
 	- ... Unique identifier for all messages
 	- ... Splunk to visualize the flow
 
-## Challenges
+## Akka Survey
+![](pictures/akka-survey.png)
 
-- ... 
+## Future Akka Roadmap
+
+- ... Persistence
+	- ... Jouraling system
+	- ... Replay messages on failure
+- ... Cluster
+	- ... Optimization (for > 200 nodes)
+	- ... Re-joining Unreachable Members
+
+## Resources
+
+- [Akka Documentation](http://akka.io/docs)
+- [LetItCrash Blog](http://www.letitcrash.com)
+- Coursera Course - Reactive Programming 
+
+## **Questions**
+
+## **Thanks**
+
+## Extras
+
+-... Map Reduce Example
+-... Cluster - Advanced 
+	- ... Gossip Convergence 
+	- ... Leader Election
+
 
 
 
