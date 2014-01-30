@@ -108,6 +108,14 @@ style: |
 	- ...Continuous Integration
 	- ...Mocks/Stubs
 
+## What do you test for in Data?
+
+- ...Correctness
+- ...Accuracy
+- ...Coverage
+- ...Consistency
+- ...Completeness
+
 ## Example I
 
 - ...URL Canonicalization
@@ -115,6 +123,14 @@ style: |
 ## Example II
 
 - ...Product Page Parser (Tagger)
+
+## Example III
+
+- ...E-commerce Store Product Coverage
+
+## Example IV
+
+- ...Product Matching Accuracy
 
 ## Challenges
 
@@ -129,11 +145,10 @@ style: |
 
 ## Metrics & Monitoring
 
+- ...Metrics Funnel
 - ...Absolute Counts Don''t work
 - ...Historical
-- ...Anomaly Detection
-- ...Correlation Detection
-
+- ...Anomaly Detection & Correlation
 
 ## Resources
 
