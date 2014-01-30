@@ -112,7 +112,7 @@ style: |
 - ...Coverage
 	- ...All products within a e-commerce store
 - ...Consistency
-	- ...Multiple views of the data should be in sync
+	- ...Duplicate urls should be aggregated as one
 - ...Completeness
 	- ...All mandatory attributes of a product captured
 
@@ -144,6 +144,7 @@ style: |
 - ...Unit Testing
 - ...Gotchas
 	- ...How to Verify Accuracy at Scale?
+		- ...Complexity is same as implementation
 		- ...Back to Square One
 
 ## Changing Algorithms and Data
@@ -168,9 +169,9 @@ style: |
 
 - Metrics Funnel @ Indix
 - ...Don''t monitor absolute counts
-- ...Use Historical Stats
-- ...Remove outliers
 - ...Anomaly Detection & Correlation
+	- ...Use Historical Stats
+	- ...Remove outliers
 
 ## Tiered Data Quality
 
@@ -184,12 +185,12 @@ style: |
 ## In Summary
 
 - Big Data Testing
-	- ...is Hard
+	- ...is hard
 	- ...gives great dividends
-	- ...build on top of Traditional
+	- ...build on top of traditional testing techniques
 	- ...needs good data understanding
 - ...Very nascent field
-	- ...Ripe for thought leadership
+	- ...ripe for thought leadership
 
 ## **Questions**
 
