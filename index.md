@@ -59,9 +59,6 @@ style: |
 
 *[Rajesh Muppalla](http://www.github.com/codingnirvana/) - rajesh@indix.com*
 
-![](pictures/cover.jpg)
-<!-- photo by John Carey, fiftyfootshadows.net -->
-
 ## About Me
 
 - Developer @ `Indix`
@@ -74,7 +71,7 @@ style: |
 
 - Product Intelligence Platform
 - ...Founded - Jan 2012
-- ...40 Person team in Chennai & Seattle
+- ...45 Person team in Chennai & Seattle
 - ...Data Company 
 - ...Some Stats
 	- ...150 M Products
@@ -85,11 +82,11 @@ style: |
 
 ![](pictures/data-pipeline.png)
 
-## **What is Big Data?** {#SeeMore}
+## **What is Big Data?** {#SeeMore1}
 
 ## 3Vs of Big Data
 
-- ...<b>Volume</b>
+- <b>Volume</b>
 	- ...Terabytes + 	
 - ...<b>Velocity</b>
 	- ...Real Time, Streaming
@@ -99,10 +96,10 @@ style: |
 
 ## Traditional Testing
 
-- ...You Test For
+- You Test For
 	- ...Happy Path Scenarios
 	- ...Failures
-	- ...Fault Tolerance/Concurrency/Peformance
+	- ...Fault Tolerance/Concurrency/Performance
 - ...Practices
 	- ...TDD
 	- ...Continuous Integration
@@ -110,54 +107,106 @@ style: |
 
 ## What do you test for in Data?
 
-- ...Correctness
-- ...Accuracy
+- Accuracy
+	- ...Capturing the real price
 - ...Coverage
+	- ...All products within a e-commerce store
 - ...Consistency
+	- ...Multiple views of the data should be in sync
 - ...Completeness
+	- ...All mandatory attributes of a product captured
 
-## Example I
+## **Some Challenges** {#SeeMore2}
 
-- ...URL Canonicalization
+## URL Canonicalization
 
-## Example II
+- Problem Statement
+	- Normalize URLs
+	- ...RFC 3986
+- ...Unit Testing
+- ...Gotchas
+	- ...Sorting Query Params
+	- ...Removing Double Slashes	
 
-- ...Product Page Parser (Tagger)
+## Product Tagger
 
-## Example III
+- Problem Statement
+- ...Unit Testing
+- ...Integration Testing
+- ...Gotchas
+	- ...Server is Down/Under Maintenance
+	- ...Sample page no longer available
+	- ...Testing Output Data Semantics
 
-- ...E-commerce Store Product Coverage
+## Product Matching Accuracy
 
-## Example IV
+- Problem Statement
+- ...Unit Testing
+- ...Gotchas
+	- ...How to Verify Accuracy at Scale?
+		- ...Back to Square One
 
-- ...Product Matching Accuracy
+## Changing Algorithms and Data
 
-## Challenges
-
-## 
+- Problem Statement
+	- ...Go back in time and re-process
+- ...Gotchas
+	- ...Too much volatility
 
 
 ## **Testing Techniques** {#SeeMore}
 
-## Sampling
+## Data Sampling
+
+- Take random samples
+- ...Do Manual verification
+- ...Use Mechanical Turk To Scale
+- ...Automate this process
+- ...Guard against data bias
+
+## Metrics, Monitoring & Alerting
+
+- Metrics Funnel @ Indix
+- ...Don''t monitor absolute counts
+- ...Use Historical Stats
+- ...Remove outliers
+- ...Anomaly Detection & Correlation
 
 ## Tiered Data Quality
 
-## Metrics & Monitoring
+- Tier Your Data
+	- ...Top E-commerce Sites
+	- ...Top Categories
+- ...For Top Tier Data
+	- ...Larger sample validation
+	- ...Lower alert thresholds
 
-- ...Metrics Funnel
-- ...Absolute Counts Don''t work
-- ...Historical
-- ...Anomaly Detection & Correlation
+## In Summary
 
-## Resources
+- Big Data Testing
+	- ...is Hard
+	- ...gives great dividends
+	- ...build on top of Traditional
+	- ...needs good data understanding
+- ...Very nascent field
+	- ...Ripe for thought leadership
 
 ## **Questions**
 
 ## **Thanks**
 
-## **Extras**
+## Lambda Architecture
 
+- ...All data is immutable
+- ...Three Layers
+	- ...Batch Layer
+	- ...Serving Layer
+	- ...Speed Layer
 
+## Lambda Architecture
 
+- ...Human Fault Tolerance
+	- ...Embrace Human Errors
+- ...Reduces Complexity
+	- ...Rebuild everything on errors
 
