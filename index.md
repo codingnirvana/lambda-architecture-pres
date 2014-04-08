@@ -26,15 +26,10 @@ style: |
     #SeeMore h2 {
         font-size:100px
         }
-    #SeeMore1 h2 {
-        font-size:100px
+    #SeeMore img {
+        width:0.72em;
+        height:0.72em;
         }
-    #SeeMore2 h2 {
-        font-size:100px
-        }
-    #SeeMore3 h2 {
-        font-size:100px	
-        } 
     #Akka img {
         width:25em;
         height:17em; 
@@ -55,15 +50,22 @@ style: |
       }
 ---
 
-# Testing Challenges in Big Data Applications {#Cover}
+# Scaling your Data Platform using Scala 
+(Akka, Scalding, Spark) {#Cover}
 
 *[Rajesh Muppalla](http://www.github.com/codingnirvana/) - rajesh@indix.com*
+
+![](pictures/cover.jpg)
+<!-- photo by John Carey, fiftyfootshadows.net -->
 
 ## About Me
 
 - Developer @ `Indix`
 	- ...Part of Platform Team
-	- ...Working on Distributed Systems & Big Data
+	- ...Focus Areas
+		- ... Distributed Systems
+		- ... Big Data
+		- ... Continuous Delivery
 - ...Ex-Thoughtworks
 	- ...Worked on `Go` - A continuous delivery product
 
@@ -71,143 +73,165 @@ style: |
 
 - Product Intelligence Platform
 - ...Founded - Jan 2012
-- ...45 Person team in Chennai & Seattle
-- ...Data Company 
+- ...50 Person team in Chennai & Seattle
+- ...Big Data Company 
 - ...Some Stats
-	- ...150 M Products
-	- ...6 B Prices
+	- ...200 M Products
+	- ...10 B Prices
 	- ...3 TB data crawled daily
 
 ## Data Pipeline @ Indix {#Pipeline}
 
 ![](pictures/data-pipeline.png)
 
-## **What is Big Data?** {#SeeMore1}
 
-## 3Vs of Big Data
+## Crawler - Requirements
 
-- <b>Volume</b>
-	- ...Terabytes + 	
-- ...<b>Velocity</b>
-	- ...Real Time, Streaming
-- ...<b>Variety</b>
-	- ...Heterogeneous Sources
-	- ...Unstructured Data
+- ...Distributed
+- ...Polite
+- ...Focused
+- ...Efficient
+- ...Fault Tolerant
+- ...Extensible
 
-## Traditional Testing
+## Our Options
 
-- You Test For
-	- ...Happy Path Scenarios
-	- ...Failures
-	- ...Fault Tolerance/Concurrency/Performance
-- ...Practices
-	- ...TDD
-	- ...Continuous Integration
-	- ...Mocks/Stubs
+-  Existing Open Source
+	- ... Nutch, Heritrix
+-  ... Build Your Own
+	- ... Work Distribution
+	- ... Cluster Management
+	- ... Storage
+	- ... Algorithms
 
-## What do you test for in Data?
+## Our Choice - Akka {#Akka}
 
-- Accuracy
-	- ...Capturing the real price
-- ...Coverage
-	- ...All products within a e-commerce store
-- ...Consistency
-	- ...Duplicate urls should be aggregated as one
-- ...Completeness
-	- ...All mandatory attributes of a product captured
+![](pictures/akka.jpg)
 
-## **Some Challenges** {#SeeMore2}
+## Why Akka?
 
-## URL Canonicalization
+- Simpler
+	- ... Concurrency
+		- ... Program at a higher level
+		- ... Don`t think 
+			- ... threads, shared state
+	- ... Scalability
+		- ... Distributed by Design
+	- ... Fault Tolerance
 
-- Problem Statement
-	- Normalize URLs
-	- ...RFC 3986
-- ...Unit Testing
-- ...Gotchas
-	- ...Sorting Query Params
-	- ...Removing Double Slashes	
+## **So what`s the <br>secret sauce?** {#SeeMore}
 
-## Product Tagger
+## **Actors**
 
-- Problem Statement
-- ...Unit Testing
-- ...Integration Testing
-- ...Gotchas
-	- ...Server is Down/Under Maintenance
-	- ...Sample page no longer available
-	- ...Testing Output Data Semantics
+## What is an Actor?
 
-## Product Matching Accuracy
+- ... Unit of computation in Akka
+- ... Message passing concurrency
+- ... Purely reactive
+	- ... a mailbox
+	- ... behavior & state
+	- ... scheduled to run when sent a message
+- ... Used since 1973
+	- ... in Telecom with 9 nines availability
 
-- Problem Statement
-- ...Unit Testing
-- ...Gotchas
-	- ...How to Verify Accuracy at Scale?
-		- ...Complexity is same as implementation
-		- ...Back to Square One
+## With a Diagram {#Actor}
+![](pictures/actor.jpg) 
 
-## Changing Algorithms and Data
+## **Show me the code** {#SeeMore}
 
-- Problem Statement
-	- ...Go back in time and re-process
-- ...Gotchas
-	- ...Too much volatility
+## **Hello World** {#SeeMore}
 
+## Parallelism
 
-## **Testing Techniques** {#SeeMore}
+- ... Scale by creating multiple actor instances
+- ... Order is not guaranteed
 
-## Data Sampling
+## Supervision
 
-- Take random samples
-- ...Do Manual verification
-- ...Use Mechanical Turk To Scale
-- ...Automate this process
-- ...Guard against data bias
+- ... Manage other Actor''s failure
+- ... Termination messages sent to Supervisor
+- ... Separates processing & error handling
+- ... Multiple Strategies
+	- ... One-For-One
+	- ... All-For-One
 
-## Metrics, Monitoring & Alerting
+## Clustering
 
-- Metrics Funnel @ Indix
-- ...Don''t monitor absolute counts
-- ...Anomaly Detection & Correlation
-	- ...Use Historical Stats
-	- ...Remove outliers
+- ... Released in Akka 2.2
+- ... Gossip based Cluster Membership
+- ... Failure Detector
+- ... Cluster DeathWatch
+- ... Adaptive Load Balancing
 
-## Tiered Data Quality
+## **Back to the Crawler** {#SeeMore}
 
-- Tier Your Data
-	- ...Top E-commerce Sites
-	- ...Top Categories
-- ...For Top Tier Data
-	- ...Larger sample validation
-	- ...Lower alert thresholds
+## Key Components
 
-## In Summary
+- ... URL Frontiers 
+	- ... Site Queues
+	- ... Priority Queues
+- ... URL Router ( 1 per frontier)
+- ... Http Fetchers	
+- ... URL Scheduler
 
-- Big Data Testing
-	- ...is hard
-	- ...gives great dividends
-	- ...build on top of traditional testing techniques
-	- ...needs good data understanding
-- ...Very nascent field
-	- ...ripe for thought leadership
+## Patterns Used
+
+- ... Supervision Strategy
+- ... Work Pulling
+- ... Throttling
+- ... Periodic Message Scheduling
+
+## Lessons Learned
+
+- ... The Actor Model
+	- ... Like OO - New way of thinking
+	- ... Actor composition
+	- ... Message design
+	- ... Externalize business logic
+- ... No Blocking
+	- ... Degraded performance due to starvation
+	- ... Separate thread pool
+
+## Lessons Learned (Continued)
+
+- ... Running on EC2
+	- ... Unreliable Network
+	- ... Failure detector tuning
+
+- ... Message Tracing - Debugging
+	- ... Unique identifier for all messages
+	- ... Splunk to visualize the flow
+
+## Akka Survey {#AkkaSurvey}
+![](pictures/akka-survey.png)
+
+## Future Akka Roadmap
+
+- ... Persistence
+	- ... Jouraling system
+	- ... Replay messages on failure
+- ... Cluster
+	- ... Optimization (for > 200 nodes)
+	- ... Re-joining Unreachable Members
+
+## Resources
+
+- [Akka Documentation](http://akka.io/docs)
+- [LetItCrash Blog](http://www.letitcrash.com)
+- Coursera Course - Reactive Programming 
 
 ## **Questions**
 
 ## **Thanks**
 
-## Lambda Architecture
+## Extras
 
-- ...All data is immutable
-- ...Three Layers
-	- ...Batch Layer
-	- ...Serving Layer
-	- ...Speed Layer
+- ... Map Reduce Example
+- ... Cluster - Advanced 
+	- ... Gossip Convergence 
+	- ... Leader Election
 
-## Lambda Architecture
 
-- ...Human Fault Tolerance
-	- ...Embrace Human Errors
-- ...Reduces Complexity
-	- ...Rebuild everything on errors
+
+
 
