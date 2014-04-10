@@ -50,8 +50,7 @@ style: |
       }
 ---
 
-# Scaling your Data Platform using Scala 
-(Akka, Scalding, Spark) {#Cover}
+# Scaling your Data Platform using Scala {#Cover}
 
 *[Rajesh Muppalla](http://www.github.com/codingnirvana/) - rajesh@indix.com*
 
@@ -76,7 +75,7 @@ style: |
 - ...50 Person team in Chennai & Seattle
 - ...Big Data Company 
 - ...Some Stats
-	- ...200 M Products
+	- ...250 M Products
 	- ...10 B Prices
 	- ...3 TB data crawled daily
 
@@ -84,6 +83,7 @@ style: |
 
 ![](pictures/data-pipeline.png)
 
+## Tech Stack @ Indix
 
 ## Crawler - Requirements
 
@@ -202,9 +202,6 @@ style: |
 	- ... Unique identifier for all messages
 	- ... Splunk to visualize the flow
 
-## Akka Survey {#AkkaSurvey}
-![](pictures/akka-survey.png)
-
 ## Future Akka Roadmap
 
 - ... Persistence
@@ -214,7 +211,49 @@ style: |
 	- ... Optimization (for > 200 nodes)
 	- ... Re-joining Unreachable Members
 
+
+## Problem
+
+## Map Reduce to Rescue
+
+## First Attempt
+
+- ... Plain vanilla map reduce
+
+## Second Attempt
+
+- ... Pig UDF Scripts
+
+## Scalding
+
+- ... What is Scalding?
+- ... Why Scala for Map/Reduce?
+- ... How is it used at Indix?
+
+## Example Scalding Job (Word Count)
+
+## Scalding Model
+
+- ... Built on top of Cascading
+- ... Source and Sinks
+	- ... Read and write data
+	- ... From HDFS, DBs, Memcache etc.
+- ... Pipes represents the flows of data in the job
+
+## Example Again
+
+## Why Scala?
+
+- ... Features to implement a DSL 
+- ... Map/Reduce is within the functional paradigm
+- ... Collection api covers all use cases
+	- ... API is very Scala like
+
+
+
+
 ## Resources
+
 
 - [Akka Documentation](http://akka.io/docs)
 - [LetItCrash Blog](http://www.letitcrash.com)
