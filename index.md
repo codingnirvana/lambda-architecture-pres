@@ -30,6 +30,9 @@ style: |
         width:0.72em;
         height:0.72em;
         }
+    #DataCollection h2 {
+        font-size:80px
+        }
     #Akka img {
         width:25em;
         height:17em; 
@@ -43,6 +46,33 @@ style: |
        margin:-30px -10px 0 0; 
        height:20em;    
        }
+    #TechStack img {
+       width:30em;
+       height:18em;    
+      }
+     #MR img {
+       width:30em;
+       margin:-30px -10px 0 0;
+       height:18em;    
+      }
+      #JWC img {
+       width:24em;
+       margin:-20px -10px 0 0;
+       height:19em;    
+      }
+      #SWC img {
+       width:30em;
+       height:12em;    
+      }
+      #PWC img {
+       width:30em;
+       height:10em;    
+      }
+      #FOO img {
+       width:30em;
+       height:18em;    
+      }
+
     #AkkaSurvey img {
        width:30em;
        margin:-20px -10px 0 0; 
@@ -59,12 +89,11 @@ style: |
 
 ## About Me
 
-- Developer @ `Indix`
-	- ...Part of Platform Team
+- Co-Founder @ `Indix`
+	- ...Data Platform Lead
 	- ...Focus Areas
-		- ... Distributed Systems
 		- ... Big Data
-		- ... Continuous Delivery
+		- ... Distributed Systems
 - ...Ex-Thoughtworks
 	- ...Worked on `Go` - A continuous delivery product
 
@@ -79,11 +108,26 @@ style: |
 	- ...10 B Prices
 	- ...3 TB data crawled daily
 
+## Tech Stack @ Indix {#TechStack}
+
+![](pictures/tech_stack_indix.png)
+
 ## Data Pipeline @ Indix {#Pipeline}
 
 ![](pictures/data-pipeline.png)
 
-## Tech Stack @ Indix
+## Scala @ Indix
+
+- ... Primary Language for Data Platform & Analytics team
+- ... Data Collection (Crawling) 
+	- ... Akka
+- ... Data Processing
+	- ... Scalding
+	- ... Spark
+- ... Metrics & Dashboard
+	- ... Play
+
+## **Data Collection (Crawling)** {#DataCollection}
 
 ## Crawler - Requirements
 
@@ -137,9 +181,9 @@ style: |
 ## With a Diagram {#Actor}
 ![](pictures/actor.jpg) 
 
-## **Show me the code** {#SeeMore}
+## **Show me the code**
 
-## **Hello World** {#SeeMore}
+## **Hello World**
 
 ## Parallelism
 
@@ -163,7 +207,7 @@ style: |
 - ... Cluster DeathWatch
 - ... Adaptive Load Balancing
 
-## **Back to the Crawler** {#SeeMore}
+## **Back to the Crawler** 
 
 ## Key Components
 
@@ -211,26 +255,23 @@ style: |
 	- ... Optimization (for > 200 nodes)
 	- ... Re-joining Unreachable Members
 
+## **Data Processing**
 
-## Problem
+## Map Reduce {#MR}
 
-## Map Reduce to Rescue
+![](pictures/map_reduce_example.png)
 
-## First Attempt
+## First Attempt - Java {#JWC}
 
-- ... Plain vanilla map reduce
+![](pictures/java_word_count.png)
 
-## Second Attempt
+## Second Attempt - PIG {#PWC}
 
-- ... Pig UDF Scripts
+![](pictures/pig_word_count.png)
 
-## Scalding
+## Third Attempt - Scalding {#SWC}
 
-- ... What is Scalding?
-- ... Why Scala for Map/Reduce?
-- ... How is it used at Indix?
-
-## Example Scalding Job (Word Count)
+![](pictures/scalding_word_count.png)
 
 ## Scalding Model
 
@@ -240,8 +281,6 @@ style: |
 	- ... From HDFS, DBs, Memcache etc.
 - ... Pipes represents the flows of data in the job
 
-## Example Again
-
 ## Why Scala?
 
 - ... Features to implement a DSL 
@@ -249,11 +288,35 @@ style: |
 - ... Collection api covers all use cases
 	- ... API is very Scala like
 
+## Where do we use Scalding?
+
+- ... Daily Batch Jobs
+	- ... Latest products and prices to production
+- ... About 100 jobs run daily
+
+
+## Go Pipeline
+
+## **Real Examples**
+
+## Problems
+
+- ...Not Iterative
+- ...Real Time processing
+
+## **Spark**
+
+## What is Apache Spark?
+
+- ... In-memory analytics engine
+- ... Compatible with Hadoop Storage APIs
+- ... Upto 40x faster than Hadoop
+	- ... For memory intensive operations
+
 
 
 
 ## Resources
-
 
 - [Akka Documentation](http://akka.io/docs)
 - [LetItCrash Blog](http://www.letitcrash.com)
