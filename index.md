@@ -171,7 +171,7 @@ style: |
 
 - ... Unit of computation in Akka
 - ... Message passing concurrency
-- ... Purely reactive
+- ... Event Driven
 	- ... a mailbox
 	- ... behavior & state
 	- ... scheduled to run when sent a message
@@ -205,18 +205,13 @@ style: |
 - ... Gossip based Cluster Membership
 - ... Failure Detector
 - ... Cluster DeathWatch
-- ... Adaptive Load Balancing
 
-## **Back to the Crawler** 
+## Our Setup
 
-## Key Components
-
-- ... URL Frontiers 
-	- ... Site Queues
-	- ... Priority Queues
-- ... URL Router ( 1 per frontier)
-- ... Http Fetchers	
-- ... URL Scheduler
+- ... 50 Nodes on EC2
+	- ... 40 Crawlers (Fetch Agents)
+	- ... 5 URL Frontiers
+	- ... 5 HDFS Data Nodes
 
 ## Patterns Used
 
@@ -246,16 +241,17 @@ style: |
 	- ... Unique identifier for all messages
 	- ... Splunk to visualize the flow
 
-## Future Akka Roadmap
-
-- ... Persistence
-	- ... Jouraling system
-	- ... Replay messages on failure
-- ... Cluster
-	- ... Optimization (for > 200 nodes)
-	- ... Re-joining Unreachable Members
-
 ## **Data Processing**
+
+## Requirements
+
+- ... Batch Processing
+	- ... Approx 1M HTML pages / hr
+	- ... 200 M products
+	- ... 8 B prices
+- ... Long Running
+	- ... Run in reasonable time
+	- ... Fault Tolerant
 
 ## Map Reduce {#MR}
 
@@ -273,14 +269,6 @@ style: |
 
 ![](pictures/scalding_word_count.png)
 
-## Scalding Model
-
-- ... Built on top of Cascading
-- ... Source and Sinks
-	- ... Read and write data
-	- ... From HDFS, DBs, Memcache etc.
-- ... Pipes represents the flows of data in the job
-
 ## Why Scala?
 
 - ... Features to implement a DSL 
@@ -288,16 +276,23 @@ style: |
 - ... Collection api covers all use cases
 	- ... API is very Scala like
 
+## Scalding Model
+
+- ... Built on top of Cascading
+- ... Source and Sinks
+        - ... Read and write data
+        - ... From HDFS, DBs, Memcache etc.
+- ... Pipes represents the flows of data in the job
+
 ## Where do we use Scalding?
 
 - ... Daily Batch Jobs
 	- ... Latest products and prices to production
 - ... About 100 jobs run daily
 
+## Our Data Pipeline {#FOO}
 
-## Go Pipeline
-
-## **Real Examples**
+![](pictures/go_pipelines.png)
 
 ## Problems
 
@@ -313,8 +308,9 @@ style: |
 - ... Upto 40x faster than Hadoop
 	- ... For memory intensive operations
 
+## Where do we use Spark?
 
-
+- ... Clustering for our Matching 
 
 ## Resources
 
