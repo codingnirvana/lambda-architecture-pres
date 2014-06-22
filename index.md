@@ -8,7 +8,7 @@ style: |
         margin:10px 0 0;
         color:#FFF;
         text-align:center;
-        font-size:65px;
+        font-size:60px;
         }
     #Cover p {
         margin:250px 0 0;
@@ -131,7 +131,7 @@ style: |
 ![](pictures/lambda-architecture.png)
 <!--photo source - http://lambda-architecture.net/ -->
 
-## Lambda Archicture @ Indix
+## Lambda Architecture @ Indix
 
 - TODO - Add Diagram
 
