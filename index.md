@@ -5,10 +5,10 @@ layout: ribbon
 style: |
 
     #Cover h2 {
-        margin:30px 0 0;
+        margin:10px 0 0;
         color:#FFF;
         text-align:center;
-        font-size:70px;
+        font-size:65px;
         }
     #Cover p {
         margin:250px 0 0;
@@ -16,7 +16,7 @@ style: |
         color:#FFF;
         font-style:italic;
         font-size:30px;
-        }
+          }
         #Cover p a {
             color:#FFF;
             }
@@ -30,57 +30,20 @@ style: |
         width:0.72em;
         height:0.72em;
         }
-    #DataCollection h2 {
-        font-size:80px
-        }
-    #Akka img {
-        width:25em;
-        height:17em; 
-        }
-    #Actor img {
-        width:17em;
-        height:17em; 
-        }
     #Pipeline img {
        width:30em;
        margin:-30px -10px 0 0; 
        height:20em;    
        }
-    #TechStack img {
+    #goPipelines img {
        width:30em;
-       height:18em;    
-      }
-     #MR img {
-       width:30em;
-       margin:-30px -10px 0 0;
-       height:18em;    
-      }
-      #JWC img {
-       width:24em;
-       margin:-20px -10px 0 0;
-       height:19em;    
-      }
-      #SWC img {
-       width:30em;
-       height:12em;    
-      }
-      #PWC img {
-       width:30em;
-       height:10em;    
-      }
-      #FOO img {
-       width:30em;
-       height:18em;    
-      }
-
-    #AkkaSurvey img {
-       width:30em;
-       margin:-20px -10px 0 0; 
-       height:17em;    	  		
-      }
+       margin:-30px -10px 0 0; 
+       height:20em;    
+       }   
+    
 ---
 
-# Scaling your Data Platform using Scala {#Cover}
+# Analytics on Large Scale, Unstructured Data using Lambda Architecture {#Cover}
 
 *[Rajesh Muppalla](http://www.github.com/codingnirvana/) - rajesh@indix.com*
 
@@ -90,12 +53,13 @@ style: |
 ## About Me
 
 - Co-Founder @ `Indix`
-	- ...Data Platform Lead
-	- ...Focus Areas
+	- ... Data Platform Lead
+	- ... Focus Areas
 		- ... Big Data
 		- ... Distributed Systems
-- ...Ex-Thoughtworks
-	- ...Worked on `Go` - A continuous delivery product
+- ... Ex-Thoughtworks
+	- ... Tech Lead on `Go-CD`
+    - ... An open source agile release management tool
 
 ## About Indix
 
@@ -103,233 +67,179 @@ style: |
 - ...Founded - Jan 2012
 - ...50 Person team in Chennai & Seattle
 - ...Big Data Company 
-- ...Some Stats
-	- ...250 M Products
+	- ...350 M Products
 	- ...10 B Prices
-	- ...3 TB data crawled daily
-
-## Tech Stack @ Indix {#TechStack}
-
-![](pictures/tech_stack_indix.png)
+	- ...4 TB data crawled daily
 
 ## Data Pipeline @ Indix {#Pipeline}
 
 ![](pictures/data-pipeline.png)
 
-## Scala @ Indix
+## Implementation - First Attempt
 
-- ... Primary Language for Data Platform & Analytics team
-- ... Data Collection (Crawling) 
-	- ... Akka
-- ... Data Processing
-	- ... Scalding
-	- ... Spark
-- ... Metrics & Dashboard
-	- ... Play
+- Storage - Mongo DB
+  - ...Convenient
+  - ...Schema-less
+  - ...Used it likes an RDMBS
+- ...Analytics
+  - ...No batch processing
+  - ...All queries real time  
+- ...In Production for 4 Months
 
-## **Data Collection (Crawling)** {#DataCollection}
+## Implementation - Second Attempt
 
-## Crawler - Requirements
+- HBase
+  - ...Data Model based on Google's Big Table
+    - ...One Single Table
+    - ...Different CF for each component
+  - ...JSON for Serialization
+- ...Map Reduce Jobs
+  - ...Java API
+- ...In Production for 1 year  
 
-- ...Distributed
-- ...Polite
-- ...Focused
-- ...Efficient
-- ...Fault Tolerant
-- ...Extensible
+## Pain Points
+  
+  - Data Corruption
+    - ... Data Model evolution error prone
+    - ... Trivial bugs had cascading effect
+  - ... Operational Issues
+    - ... High Write/Read Througput not sustainable
+    - ... Rolling out updates needed downtime
+  - ... Long Running Jobs
 
-## Our Options
-
--  Existing Open Source
-	- ... Nutch, Heritrix
--  ... Build Your Own
-	- ... Work Distribution
-	- ... Cluster Management
-	- ... Storage
-	- ... Algorithms
-
-## Our Choice - Akka {#Akka}
-
-![](pictures/akka.jpg)
-
-## Why Akka?
-
-- Simpler
-	- ... Concurrency
-		- ... Program at a higher level
-		- ... Don`t think 
-			- ... threads, shared state
-	- ... Scalability
-		- ... Distributed by Design
-	- ... Fault Tolerance
-
-## **So what`s the <br>secret sauce?** {#SeeMore}
-
-## **Actors**
-
-## What is an Actor?
-
-- ... Unit of computation in Akka
-- ... Message passing concurrency
-- ... Event Driven
-	- ... a mailbox
-	- ... behavior & state
-	- ... scheduled to run when sent a message
-- ... Used since 1973
-	- ... in Telecom with 9 nines availability
-
-## With a Diagram {#Actor}
-![](pictures/actor.jpg) 
-
-## **Show me the code**
-
-## **Hello World**
-
-## Parallelism
-
-- ... Scale by creating multiple actor instances
-- ... Order is not guaranteed
-
-## Supervision
-
-- ... Manage other Actor''s failure
-- ... Termination messages sent to Supervisor
-- ... Separates processing & error handling
-- ... Multiple Strategies
-	- ... One-For-One
-	- ... All-For-One
-
-## Clustering
-
-- ... Released in Akka 2.2
-- ... Gossip based Cluster Membership
-- ... Failure Detector
-- ... Cluster DeathWatch
-
-## Our Setup
-
-- ... 50 Nodes on EC2
-	- ... 40 Crawlers (Fetch Agents)
-	- ... 5 URL Frontiers
-	- ... 5 HDFS Data Nodes
-
-## Patterns Used
-
-- ... Supervision Strategy
-- ... Work Pulling
-- ... Throttling
-- ... Periodic Message Scheduling
-
-## Lessons Learned
-
-- ... The Actor Model
-	- ... Like OO - New way of thinking
-	- ... Actor composition
-	- ... Message design
-	- ... Externalize business logic
-- ... No Blocking
-	- ... Degraded performance due to starvation
-	- ... Separate thread pool
-
-## Lessons Learned (Continued)
-
-- ... Running on EC2
-	- ... Unreliable Network
-	- ... Failure detector tuning
-
-- ... Message Tracing - Debugging
-	- ... Unique identifier for all messages
-	- ... Splunk to visualize the flow
-
-## **Data Processing**
+## **Rethink our Data Platform** {#SeeMore}
 
 ## Requirements
 
-- ... Batch Processing
-	- ... Approx 1M HTML pages / hr
-	- ... 200 M products
-	- ... 8 B prices
-- ... Long Running
-	- ... Run in reasonable time
-	- ... Fault Tolerant
+- Human Fault Tolerant
+- ... Storage
+  - ... Immutable
+  - ... High Read/Write Throughput
+  - ... Operationally Easy
+- ... Recomputation
+  - ... Newer Facts Discovered
 
-## Map Reduce {#MR}
+## Requirements (Continued)
 
-![](pictures/map_reduce_example.png)
+- Processing
+  - ... Higher Level (Abstractions)
+- ... Latency
+  - ... Near Real Time (Few Hours)
 
-## First Attempt - Java {#JWC}
+## Lambda Architecture
 
-![](pictures/java_word_count.png)
+![](pictures/lambda-architecture.png)
+<!--photo source - http://lambda-architecture.net/ -->
 
-## Second Attempt - PIG {#PWC}
+## Lambda Archicture @ Indix
 
-![](pictures/pig_word_count.png)
+- TODO - Add Diagram
 
-## Third Attempt - Scalding {#SWC}
+## Batch Layer - Data Model
 
-![](pictures/scalding_word_count.png)
+- Store Raw(est) Data
+  - ... Human Fault Tolerant
+  - ... Capturing change with Immutability
+    - ... Fact based model
+- ... Enforceable Schema
+  - ... Thrift for Serialization
+  - ... Schema Evolution
 
-## Why Scala?
+## Batch Layer - Data Model
 
-- ... Features to implement a DSL 
-- ... Map/Reduce is within the functional paradigm
-- ... Collection api covers all use cases
-	- ... API is very Scala like
+  - TODO - Fact Based Model examples
+  - TODO - Schema Evolution examples
 
-## Scalding Model
+## Batch Layer - Data Storage
 
-- ... Built on top of Cascading
-- ... Source and Sinks
-        - ... Read and write data
-        - ... From HDFS, DBs, Memcache etc.
-- ... Pipes represents the flows of data in the job
+- ... Directories in HDFS
+  - ... Vertical Partioning Scheme
+  - ... Pail as an Abstraction Layer
+- ... HDFS Small Files Problem
+  - ... Archival & Consolidation
 
-## Where do we use Scalding?
+## Batch Layer - Data Storage
 
-- ... Daily Batch Jobs
-	- ... Latest products and prices to production
-- ... About 100 jobs run daily
+- TODO - Pail Code Snippets
+- TODO - Archival & Consolidation Template
 
-## Our Data Pipeline {#FOO}
+## Batch Layer - Processing
 
-![](pictures/go_pipelines.png)
+- Map Reduce
+  - ... Linear Scalability
+- ... Scalding
+  - ... Higher Level Abstractions
+  - ... Write Complex Map Reduce Jobs
+- ... Spark
+  - ... For Iterative Algorithms
+  - ... E.g. Clustering 
 
-## Problems
+## Batch Layer - Tying it all together {#goPipelines}
 
-- ...Not Iterative
-- ...Real Time processing
+![](pictures/go-pipelines.png)
 
-## **Spark**
+## Serving Layer
+  - Views and Indexes on Batch Data
+  - ... HBase & Solr
+    - ... Bulk Import batch data
+    - ... No random writes
+    - ... Multiple Tables/Collections, optimized according to queries
 
-## What is Apache Spark?
+## Speed Layer - Real Time Views
+  - Responsible for low latency updates
+  - ... Transient
+    - ... Low State 
+  - ... Incremental Computation
+    - ... Tradeoff - Latency vs Eventual Accuracy
+    - ... Apporximations may work
+  
+## Speed Layer - Algorithms & Data Structures
+  - ... Abstract Algebra Concepts
+    - ... Monoids
+  - ... Data Structures  
+    - ... BloomFilters
+    - ... HyperLogLog
+    - ... Count Min Sketch    
 
-- ... In-memory analytics engine
-- ... Compatible with Hadoop Storage APIs
-- ... Upto 40x faster than Hadoop
-	- ... For memory intensive operations
+## Speed Layer - Architecture
+  - Micro Batch Processing
+  - ... HBase and Solr
+    - ... Random writes
+  - ... Expiring Real Time Views
 
-## Where do we use Spark?
+## Query Layer
+  - Responsible for answering queries
+    - ... Merges Serving Layer + Speed Layer
+  - ... TODO - Diagram of merging 
 
-- ... Clustering for our Matching 
+## Open Problems
+  
+  - Batch & Real Time Code Duplication 
+    - ... Evaluating Summingbird
+  - ... Reducing Latency to minutes
+    - ... Evaluating Kafka + Storm and Spark streaming
+  
+## Summary
+  
+  - Lambda Architecture
+    - ... Blueprint to build batch and real time systems
+    - ... Domain agnostic but have to adapt to your domain
+    - ... Solid Principles but Tools & Technologies not mature yet
 
 ## Resources
 
-- [Akka Documentation](http://akka.io/docs)
-- [LetItCrash Blog](http://www.letitcrash.com)
-- Coursera Course - Reactive Programming 
+- [Runaway Complexity in Big Data Systems](http://www.slideshare.net/nathanmarz/runaway-complexity-in-big-data-and-a-plan-to-stop-it)
+- [Lambda Architecture](http://lambda-architecture.net/)
+- [Big Data Book - Manning](http://www.manning.com/marz/)
+- [Scalding](https://github.com/twitter/scalding)
+- [Spark](http://spark.apache.org/)
+- [Pail](https://github.com/nathanmarz/dfs-datastores)
+- [Summingbird](https://github.com/twitter/summingbird)
+
 
 ## **Questions**
 
 ## **Thanks**
-
-## Extras
-
-- ... Map Reduce Example
-- ... Cluster - Advanced 
-	- ... Gossip Convergence 
-	- ... Leader Election
-
-
 
 
 
