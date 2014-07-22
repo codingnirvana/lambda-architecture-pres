@@ -49,7 +49,12 @@ style: |
        width:35em;
        margin:-30px -10px 0 0; 
        height:16em;    
-       }     
+       }  
+    #scalding img {
+       width:35em;
+       margin:-30px -10px 0 0; 
+       height:16em;    
+       }        
     #goPipelines img {
        width:30em;
        margin:-30px -10px 0 0; 
@@ -99,7 +104,7 @@ style: |
     - ... Rolling out updates needed downtime
   - ... Data Corruption
     - ... Trivial bugs had cascading effect
-    - ... Hard Traceability
+    - ... Traceability was Hard
   
 ## Pain Points (Contd)
 
@@ -130,14 +135,6 @@ style: |
 
 ![](pictures/lambda_architecture_at_indix.png)
 
-## Key Principles
-  
-  - Complexity Isolation
-    - ... No Random Write Databases
-      - ... Avoids Major Compactions
-      - ... Isolated in Speed Layer
-        - ... Much lesser data
-
 ## Key Principles (Contd)    
   
   - Human Fault Tolerant  
@@ -147,14 +144,23 @@ style: |
       - ... Store "Rawest" form of data
     - ... When there are bugs
       - ... Remove and/or Recompute
-    
+ 
+## Key Principles
+  
+  - Complexity Isolation
+    - ... No Random Write Databases
+      - ... In Batch & Serving Layer
+      - ... Avoids Major Compactions
+    - ... Isolated in Speed Layer
+        - ... Much lesser data
+
 ## Key Principles (Contd)
   
   - Enforceable Schemas
     - ... Write Time vs Read Time
     - ... Use Data Serialization F/W
       - ... Eg. Thrift, Protobuf, Avro
-  - Higher Level Abstractions
+  - ... Higher Level Abstractions
     - ... MapReduce is to too low level
     - ... Eg. Cascading, Scalding, Cascalog
 
@@ -172,6 +178,7 @@ style: |
 ## **Batch Layer**
 
 ## Batch Layer
+  - Computes arbitrary functions on master data
   - Two key Components
     - ... Compute (or Processing) 
     - ... Storage
@@ -187,17 +194,19 @@ style: |
       - ... Built on top of Cascading
       - ... Use Scala's Higher Order Functions (HOF)
       - ... Concise and Composable 
+- ... Some Numbers
+  - ... 120+ daily jobs on 100+ node AWS Cluster      
 
-## Scalding - Example code  {#scalding}
+## Scalding - Motivating Example  {#scalding}
 ![](pictures/scalding.png)  
 
 ## Batch Layer @ Indix - Data Storage
 
-- HDFS
-- ... Directories in HDFS
+- HDFS Directories
+  - ... Immutable "Master Data" Store
   - ... Vertical Partioning Scheme
-  - ... Hourly/Daily/Weekly 
-  - ... Run computes on subset of data
+    - ... Hourly/Daily/Weekly 
+    - ... Run computes on subset of data
 - ... New data
   - ... Appended to the appropriate directory
 
@@ -223,10 +232,8 @@ style: |
 - ... Pail for vertical partitioning  
 
 ## **Serving Layer**
-
-## Serving Layer
-  
-## Serving Layer
+ 
+## Serving Layer  
   
   - Exposes batch views for ad-hoc querying
   - ... Requirements
@@ -279,11 +286,10 @@ style: |
     
 ## Speed Layer @ Indix
   
-  - Micro Batch Processing
-  - ... HBase and Solr
-    - ... Random writes
-  - ... Expiring Real Time Views
-  
+  - Work in Progress
+  - ... Micro Batch Implemenation
+    - ... Incremental Batch & Serving Layer
+
 ## Tying it all together {#goPipelines}
 
 ![](pictures/go-pipelines.png)
@@ -317,10 +323,10 @@ style: |
 - [Pail](https://github.com/nathanmarz/dfs-datastores)
 - [Summingbird](https://github.com/twitter/summingbird)
 
-
 ## **Questions**
 
 ## **Thanks**
 
+## **Alternate Pitch**
 
 
